@@ -1,0 +1,30 @@
+
+# 모든 *.tf 파일에서 사용할 수 있는 지역변수 만들기
+locals {
+    project_name    = "test"
+    user_name       = "kim"
+    setup_content = <<-EOF
+        #!/bin/bash
+        echo "Welcome to ${local.project_name}"
+        echo "Created by ${local.user_name}"
+    EOF
+    file_path = "${path.module}/generated_files"
+}
+
+
+# 파일을 생성할떄는 "local_file" 이라는 resource를 사용해야 함
+
+# 참조할때는 local.지역변수이름 
+
+resource "local_file" "welcome_msg" {
+    filename = "${local.file_path}/welcome.txt"
+    content = "안녕하세요! ${local.user_name}님 by terraform"
+
+}
+resource "local_file" "setup_script" {
+    filename = "${local.file_path}/setup.sh"
+    content = local.setup_content
+    file_permission = "0755"
+}
+
+
