@@ -49,7 +49,7 @@ variable "common_tags"{
 variable "is_production" {
     type = bool
     description = "운영환경이면 true, 개발환경이면 false를 넣으세요"
-    default = falsedefault = false
+    default = false
 }
 
 # 변수에 저장된 내용 출력하기
@@ -66,7 +66,6 @@ output "debug03_info" {
     #문자열 보간법을 이용해서 원하는 문자열 형식을 만들어서 출력할 수 있다.
     value = "프로젝트명 : ${var.project_name} , 환경 : ${var.env}"
 }
-
 
 output "debug04_vpc_name" {
     value = "vpc 이름 : ${var.vpc_name}"

@@ -1,10 +1,9 @@
 
-# test02_basic/file2/main.tf
-
 
 # local_file 을 이용해서 ansible.cfg 파일을 만들어 보자
+
 resource "local_file" "ansible_config" {
-    # 파일명 ( ${path.module} 은 현재 작업 폴더의 경로를 나타낸다)
+    # 파일명  ${path.module} 은 현재 작업 폴더의 경로를 나타낸다)
     filename = "${path.module}/ansible.cfg"
     # 파일의 내용
     content = <<-EOF
